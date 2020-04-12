@@ -1,0 +1,49 @@
+<h2>Products</h2>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Intitulé</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Image</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Produit of  productsList; let i = index">
+        <th scope="row" >#</th>
+        <td>{{Produit.id}}</td>
+        <td>{{Produit.intitule}}</td>
+        <td>{{Produit.prix | currency}}</td>
+        <td><img class="card-img-top" alt="Card image cap" [src]="Produit.imgURL" height="180" *ngIf="Produit.imgURL"></td>
+        <td>
+
+
+          <button type="button" class="btn btn-info">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"> Consulter</span>
+          </button>
+
+          <button type="button" class="btn btn-primary" (click)="editProduct(Produit.id)" >
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"> Modifier</span>
+            </button>
+
+          <button type="button" class="btn btn-danger" (click)="deleteProduct(Produit.id, i)" >
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"> Supprimer</span></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+<!--
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

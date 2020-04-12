@@ -1,0 +1,33 @@
+
+<div class="header">
+    <h1>Modifier Produit</h1>
+  </div>
+  <div class="container">
+
+      <form  #productForm="ngForm"  (ngSubmit)="onSubmit(Product)">
+        <div class="form-group" [class.has-error]="intituleControl.invalid">
+          <label for="intitule" class="control-label">Intitule</label>
+          <input type="text" class="form-control" id="intitule"  [(ngModel)]="Product.intitule"  #intituleControl="ngModel" name="intitule" required>
+          <span *ngIf="intituleControl.invalid" class="help-block">
+            Veuillez saisir l'intitulé !
+          </span>
+        </div>
+        <div class="form-group" [class.has-error]="prixControl.invalid">
+          <label for="prix" class="control-label">Prix</label>
+          <input type="number" class="form-control" [(ngModel)]="Product.prix" required  #prixControl="ngModel" min="0" name="prix"  id="prix">
+          <span *ngIf="prixControl.invalid" class="help-block">
+            Veuillez saisir le prix
+          </span>
+        </div>
+
+        <div class="form-group">
+        <label for="image">Image</label>
+          <input #imageInput
+                 type="file"
+                 accept="image/*"
+                 (change)="onFileSelected($event)">
+      </div>
+      <button type="submit" [disabled]="productForm.invalid"
+      class="btn btn-success" >Modifier</button>
+      </form>
+  </div>
